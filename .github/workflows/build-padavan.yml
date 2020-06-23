@@ -98,11 +98,11 @@ jobs:
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
 
-          # 编译arm固件:
+          # 编译x64固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_MT76xx=y
-          CONFIG_TARGET_MTxx_DEVICE_newifi3-D2=y
-          CONFIG_TARGET_BOARD="MT76xx"
+          CONFIG_TARGET_MT7621=y
+          CONFIG_TARGET_MT7621_DEVICE_NEWIFI3-D2=y
+          CONFIG_TARGET_BOARD="MT7621"
           EOF
 
           # 固件压缩:
@@ -132,13 +132,13 @@ jobs:
           # EOF
 
           # USB3.0支持:
-          # cat >> .config <<EOF
-          # CONFIG_PACKAGE_kmod-usb-ohci=y
-          # CONFIG_PACKAGE_kmod-usb-ohci-pci=y
-          # CONFIG_PACKAGE_kmod-usb2=y
-          # CONFIG_PACKAGE_kmod-usb2-pci=y
-          # CONFIG_PACKAGE_kmod-usb3=y
-          # EOF
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_kmod-usb-ohci=y
+          CONFIG_PACKAGE_kmod-usb-ohci-pci=y
+          CONFIG_PACKAGE_kmod-usb2=y
+          CONFIG_PACKAGE_kmod-usb2-pci=y
+          CONFIG_PACKAGE_kmod-usb3=y
+          EOF
 
           # 常用LuCI插件选择:
           cat >> .config <<EOF
@@ -163,8 +163,8 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           # CONFIG_PACKAGE_luci-app-wireguard=y
           # CONFIG_PACKAGE_luci-app-wrtbwmon=y
-          CONFIG_PACKAGE_luci-app-nft-qos=y
           CONFIG_PACKAGE_luci-app-sfe=y
+          CONFIG_PACKAGE_luci-app-nft-qos=y
           EOF
 
           # LuCI主题:
@@ -182,7 +182,6 @@ jobs:
           CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
           CONFIG_PACKAGE_ddns-scripts_aliyun=y
-          CONFIG_PACKAGE_UnblockNeteaseMusic=y
           CONFIG_PACKAGE_ddns-scripts_dnspod=y
           EOF
 
